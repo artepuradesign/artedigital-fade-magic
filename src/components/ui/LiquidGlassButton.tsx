@@ -2,6 +2,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useLiquidGlass } from '@/contexts/LiquidGlassContext';
 
 interface LiquidGlassButtonProps {
   children: React.ReactNode;
@@ -19,8 +20,8 @@ const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
   ariaLabel,
 }) => {
   const [ripplePos, setRipplePos] = useState({ x: 50, y: 50 });
-  const [isPressed, setIsPressed] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const { config } = useLiquidGlass();
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (!btnRef.current) return;
@@ -38,9 +39,9 @@ const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
       ref={btnRef}
       onClick={onClick}
       onPointerMove={handlePointerMove}
-      onPointerDown={() => setIsPressed(true)}
-      onPointerUp={() => setIsPressed(false)}
-      onPointerLeave={() => setIsPressed(false)}
+      onPointerDown={() => {}}
+      onPointerUp={() => {}}
+      onPointerLeave={() => {}}
       aria-label={ariaLabel}
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -53,16 +54,17 @@ const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
         className
       )}
       style={{
-        // Dynamic radial highlight follows pointer
         '--ripple-x': `${ripplePos.x}%`,
         '--ripple-y': `${ripplePos.y}%`,
+        borderRadius: `${config.cornerRadius}px`,
+        backdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
+        WebkitBackdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
+        boxShadow: `0 0 ${config.softness}px rgba(255,255,255,${config.edgeSpecularity / 200}), inset 0 1px 0 rgba(255,255,255,${config.edgeSpecularity / 300})`,
+        opacity: config.opacity / 100,
       } as React.CSSProperties}
     >
-      {/* Inner glow layer */}
       <span className="liquid-glass-glow" aria-hidden="true" />
-      {/* Refraction / specular highlight */}
       <span className="liquid-glass-specular" aria-hidden="true" />
-      {/* Content */}
       <span className="liquid-glass-label">{children}</span>
     </motion.button>
   );
