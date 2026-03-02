@@ -30,6 +30,7 @@ const sliderParams: SliderParam[] = [
   { key: 'edgeSpecularity', label: 'Edge Specularity', min: 0, max: 100, step: 1, unit: '%' },
   { key: 'cornerRadius', label: 'Corner Radius', min: 0, max: 100, step: 1, unit: 'px' },
   { key: 'opacity', label: 'Opacity', min: 0, max: 100, step: 1, unit: '%' },
+  { key: 'backgroundAlpha', label: 'Transparência do Botão', min: 0, max: 100, step: 1, unit: '%' },
 ];
 
 const LiquidGlassAdmin = () => {
@@ -119,7 +120,7 @@ const LiquidGlassAdmin = () => {
                   borderRadius: `${config.cornerRadius}px`,
                   backdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
                   WebkitBackdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
-                  background: `rgba(255,255,255,${0.05 + config.tinting / 200})`,
+                  background: `rgba(255,255,255,${config.backgroundAlpha / 100})`,
                   boxShadow: `0 0 ${config.softness}px rgba(255,255,255,${config.edgeSpecularity / 200}), inset 0 1px 0 rgba(255,255,255,${config.edgeSpecularity / 300})`,
                   opacity: config.opacity / 100,
                 }}
