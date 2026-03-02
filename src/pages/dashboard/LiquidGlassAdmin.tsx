@@ -6,7 +6,7 @@ import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { RotateCcw, Droplets, Eye, Save } from 'lucide-react';
 import DashboardTitleCard from '@/components/dashboard/DashboardTitleCard';
-import LiquidGlassButton from '@/components/ui/LiquidGlassButton';
+
 
 interface SliderParam {
   key: keyof LiquidGlassConfig;
@@ -112,31 +112,31 @@ const LiquidGlassAdmin = () => {
               <div className="absolute bottom-12 right-12 w-40 h-40 rounded-full bg-accent/30 blur-2xl" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-secondary/40 blur-xl" />
 
-              {/* Glass Card Preview */}
+              {/* Single Glass Card Preview */}
               <div
-                className="relative z-10 p-6 border border-white/20 shadow-xl max-w-xs w-full text-center"
+                className="relative z-10 p-6 border border-white/20 shadow-xl max-w-sm w-full text-center"
                 style={{
                   borderRadius: `${config.cornerRadius}px`,
                   backdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
                   WebkitBackdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
                   background: `rgba(255,255,255,${0.05 + config.tinting / 200})`,
                   boxShadow: `0 0 ${config.softness}px rgba(255,255,255,${config.edgeSpecularity / 200}), inset 0 1px 0 rgba(255,255,255,${config.edgeSpecularity / 300})`,
+                  opacity: config.opacity / 100,
                 }}
               >
-                <p className="text-sm font-medium text-foreground/80">Glass Card Preview</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Veniam incididunt exercit lorem consectetur nulla elit.
+                <p className="text-base font-semibold text-foreground/90">Liquid Glass Preview</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Este card reflete todas as configurações em tempo real.
                 </p>
-              </div>
-
-              {/* Button Previews */}
-              <div className="relative z-10 flex flex-wrap gap-4 justify-center">
-                <LiquidGlassButton variant="primary">
-                  Testar grátis
-                </LiquidGlassButton>
-                <LiquidGlassButton variant="outline">
-                  Ver planos
-                </LiquidGlassButton>
+                <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                  style={{
+                    background: `rgba(0, 200, 50, ${0.3 + config.tinting / 300})`,
+                    borderRadius: `${config.cornerRadius}px`,
+                    backdropFilter: `blur(${config.strength}px)`,
+                  }}
+                >
+                  Botão Exemplo
+                </div>
               </div>
             </div>
 
