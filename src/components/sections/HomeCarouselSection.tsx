@@ -204,22 +204,42 @@ const HomeCarouselSection: React.FC = () => {
                             </AnimatePresence>
 
                             <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
-                              <LiquidGlassButton
-                                variant="primary"
-                                className={cn("w-full sm:w-auto", isMatrix ? "" : "hidden sm:inline-flex")}
-                                onClick={() => navigate("/registration")}
-                                ariaLabel="Testar grátis com 10 consultas"
-                              >
-                                Testar grátis (10 consultas)
-                              </LiquidGlassButton>
-                              <LiquidGlassButton
-                                variant="outline"
-                                className="w-full sm:w-auto"
-                                onClick={() => navigate("/planos-publicos")}
-                                ariaLabel="Ver planos disponíveis"
-                              >
-                                Ver planos
-                              </LiquidGlassButton>
+                              {isMatrix ? (
+                                <>
+                                  <LiquidGlassButton
+                                    variant="primary"
+                                    className="w-full sm:w-auto"
+                                    onClick={() => navigate("/registration")}
+                                    ariaLabel="Testar grátis com 10 consultas"
+                                  >
+                                    Testar grátis (10 consultas)
+                                  </LiquidGlassButton>
+                                  <LiquidGlassButton
+                                    variant="outline"
+                                    className="w-full sm:w-auto"
+                                    onClick={() => navigate("/planos-publicos")}
+                                    ariaLabel="Ver planos disponíveis"
+                                  >
+                                    Ver planos
+                                  </LiquidGlassButton>
+                                </>
+                              ) : (
+                                <>
+                                  <Button
+                                    className={cn("w-full sm:w-auto", "hidden sm:inline-flex")}
+                                    onClick={() => navigate("/registration")}
+                                  >
+                                    Testar grátis (10 consultas)
+                                  </Button>
+                                  <Button
+                                    variant="outline"
+                                    className="w-full sm:w-auto"
+                                    onClick={() => navigate("/planos-publicos")}
+                                  >
+                                    Ver planos
+                                  </Button>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>
