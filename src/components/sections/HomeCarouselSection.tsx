@@ -10,6 +10,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import LiquidGlassButton from "@/components/ui/LiquidGlassButton";
 import { cn } from "@/lib/utils";
 import { FileSearch, ShieldCheck, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -202,22 +203,23 @@ const HomeCarouselSection: React.FC = () => {
                               </motion.p>
                             </AnimatePresence>
 
-                            <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-2 justify-center">
-                              <Button
-                                size="sm"
+                            <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
+                              <LiquidGlassButton
+                                variant="primary"
                                 className={cn("w-full sm:w-auto", isMatrix ? "" : "hidden sm:inline-flex")}
                                 onClick={() => navigate("/registration")}
+                                ariaLabel="Testar grátis com 10 consultas"
                               >
                                 Testar grátis (10 consultas)
-                              </Button>
-                              <Button
-                                size="sm"
+                              </LiquidGlassButton>
+                              <LiquidGlassButton
                                 variant="outline"
                                 className="w-full sm:w-auto"
                                 onClick={() => navigate("/planos-publicos")}
+                                ariaLabel="Ver planos disponíveis"
                               >
                                 Ver planos
-                              </Button>
+                              </LiquidGlassButton>
                             </div>
                           </div>
                         </div>
