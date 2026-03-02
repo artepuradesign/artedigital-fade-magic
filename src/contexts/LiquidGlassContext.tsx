@@ -12,6 +12,7 @@ export interface LiquidGlassConfig {
   invert: number;        // % (0-100)
   edgeSpecularity: number; // % (0-100)
   cornerRadius: number;  // px (0-100)
+  opacity: number;       // % (0-100)
 }
 
 export const defaultLiquidGlassConfig: LiquidGlassConfig = {
@@ -26,6 +27,7 @@ export const defaultLiquidGlassConfig: LiquidGlassConfig = {
   invert: 9,
   edgeSpecularity: 100,
   cornerRadius: 26,
+  opacity: 100,
 };
 
 interface LiquidGlassContextType {

@@ -1,9 +1,10 @@
 import React from 'react';
+import { toast } from 'sonner';
 import { useLiquidGlass, defaultLiquidGlassConfig, LiquidGlassConfig } from '@/contexts/LiquidGlassContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
-import { RotateCcw, Droplets, Eye } from 'lucide-react';
+import { RotateCcw, Droplets, Eye, Save } from 'lucide-react';
 import DashboardTitleCard from '@/components/dashboard/DashboardTitleCard';
 import LiquidGlassButton from '@/components/ui/LiquidGlassButton';
 
@@ -28,6 +29,7 @@ const sliderParams: SliderParam[] = [
   { key: 'invert', label: 'Invert', min: 0, max: 100, step: 1, unit: '%' },
   { key: 'edgeSpecularity', label: 'Edge Specularity', min: 0, max: 100, step: 1, unit: '%' },
   { key: 'cornerRadius', label: 'Corner Radius', min: 0, max: 100, step: 1, unit: 'px' },
+  { key: 'opacity', label: 'Opacity', min: 0, max: 100, step: 1, unit: '%' },
 ];
 
 const LiquidGlassAdmin = () => {
@@ -40,6 +42,18 @@ const LiquidGlassAdmin = () => {
         subtitle="Configure o estilo Liquid Glass dos elementos do sistema"
         icon={<Droplets className="h-4 w-4 sm:h-5 sm:w-5" />}
         backTo="/dashboard/admin"
+        right={
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => toast.success('Configurações salvas!')}
+            className="rounded-full h-9 w-9"
+            aria-label="Salvar"
+            title="Salvar"
+          >
+            <Save className="h-4 w-4" />
+          </Button>
+        }
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
