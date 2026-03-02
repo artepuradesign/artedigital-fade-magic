@@ -161,7 +161,7 @@ const UserWalletDropdown = ({ onLogout }: UserWalletDropdownProps) => {
             className="fixed inset-0 z-[900] flex items-center justify-center p-4 pointer-events-none"
           >
           <div 
-            className="bg-white dark:bg-gray-900 border-2 border-border rounded-lg shadow-2xl w-80 md:w-96 pointer-events-auto"
+            className="bg-white dark:bg-gray-900 border-2 border-border rounded-lg shadow-2xl w-80 md:w-96 pointer-events-auto max-h-[90vh] overflow-y-auto"
             style={{ 
               boxShadow: '0px 20px 32px 0px hsl(var(--shadow)/0.15)' 
             }}
