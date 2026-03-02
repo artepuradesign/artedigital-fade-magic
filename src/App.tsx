@@ -172,6 +172,8 @@ import ConsultarCpfHistorico from '@/pages/dashboard/ConsultarCpfHistorico';
 import Preferencias from '@/pages/dashboard/Preferencias';
 import { SiteThemeProvider } from '@/contexts/SiteThemeContext';
 import MatrixRainBackground from '@/components/effects/MatrixRainBackground';
+import LiquidGlassAdmin from '@/pages/dashboard/LiquidGlassAdmin';
+import { LiquidGlassProvider } from '@/contexts/LiquidGlassContext';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -183,6 +185,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SiteThemeProvider>
+        <LiquidGlassProvider>
         <AuthProvider>
           <ModuleTemplateProvider>
             <TooltipProvider>
@@ -322,7 +325,8 @@ function App() {
                     <Route path="/dashboard/admin/modulos" element={<DashboardLayout><AdminModulos /></DashboardLayout>} />
                     <Route path="/dashboard/admin/usuarios-online" element={<DashboardLayout><AdminUsuariosOnline /></DashboardLayout>} />
                     <Route path="/dashboard/admin/predefinicoes" element={<DashboardLayout><RequireSupportOrAdmin><Predefinicoes /></RequireSupportOrAdmin></DashboardLayout>} />
-                    <Route path="/dashboard/admin/pedidos" element={<DashboardLayout><RequireSupportOrAdmin><AdminPedidos /></RequireSupportOrAdmin></DashboardLayout>} />
+                     <Route path="/dashboard/admin/pedidos" element={<DashboardLayout><RequireSupportOrAdmin><AdminPedidos /></RequireSupportOrAdmin></DashboardLayout>} />
+                    <Route path="/dashboard/admin/liquid-glass" element={<DashboardLayout><RequireSupportOrAdmin><LiquidGlassAdmin /></RequireSupportOrAdmin></DashboardLayout>} />
                     
                     
                     {/* Integrações */}
@@ -382,6 +386,7 @@ function App() {
             </TooltipProvider>
           </ModuleTemplateProvider>
         </AuthProvider>
+        </LiquidGlassProvider>
         </SiteThemeProvider>
       </ThemeProvider>
     </QueryClientProvider>
