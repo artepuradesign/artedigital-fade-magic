@@ -13,6 +13,7 @@ export interface LiquidGlassConfig {
   edgeSpecularity: number; // % (0-100)
   cornerRadius: number;  // px (0-100)
   opacity: number;       // % (0-100)
+  backgroundAlpha: number; // % (0-100) - transparência do fundo do botão
 }
 
 export const defaultLiquidGlassConfig: LiquidGlassConfig = {
@@ -28,6 +29,7 @@ export const defaultLiquidGlassConfig: LiquidGlassConfig = {
   edgeSpecularity: 100,
   cornerRadius: 26,
   opacity: 100,
+  backgroundAlpha: 10,
 };
 
 interface LiquidGlassContextType {

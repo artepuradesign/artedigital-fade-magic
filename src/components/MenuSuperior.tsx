@@ -178,16 +178,9 @@ const MenuSuperior = () => {
                 <UserWalletDropdown onLogout={handleLogout} />
               </>
             )}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button onClick={toggleMenu} className="p-2 rounded-md text-gray-600 hover:text-brand-purple focus:outline-none dark:text-gray-300 dark:hover:text-purple-400">
-                  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{isMenuOpen ? 'Fechar menu' : 'Abrir menu'}</p>
-              </TooltipContent>
-            </Tooltip>
+            <button onClick={toggleMenu} className="p-2 rounded-md text-gray-600 hover:text-brand-purple focus:outline-none dark:text-gray-300 dark:hover:text-purple-400" aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
