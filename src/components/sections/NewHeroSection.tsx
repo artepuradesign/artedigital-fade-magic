@@ -59,7 +59,7 @@ const NewHeroSection: React.FC = () => {
                 className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold text-base px-8"
                 onClick={() => navigate('/registration')}
               >
-                Testar grátis (10 consultas)
+               Cadastre-se!
               </Button>
               <Button
                 size="lg"
@@ -67,7 +67,7 @@ const NewHeroSection: React.FC = () => {
                 className="border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8"
                 onClick={() => navigate('/planos-publicos')}
               >
-                Ver planos
+                Planos Disponíveis
               </Button>
             </div>
           </motion.div>
