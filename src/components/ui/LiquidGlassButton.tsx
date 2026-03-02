@@ -46,17 +46,14 @@ const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
     config.tintHue !== 0 ? `hue-rotate(${config.tintHue}deg)` : '',
   ].filter(Boolean).join(' ');
 
-  const cssVars: Record<string, string> = {
+  const dynamicStyle: React.CSSProperties = {
     '--ripple-x': `${ripplePos.x}%`,
     '--ripple-y': `${ripplePos.y}%`,
-  };
-
-  const dynamicStyle: React.CSSProperties = {
-    ...cssVars,
     borderRadius: `${config.cornerRadius}px`,
     backdropFilter: backdropValue,
     WebkitBackdropFilter: backdropValue,
     opacity: opacityFactor,
+    // Make backgrounds more transparent so backdrop-filter shows through
     ...(isPrimary ? {
       background: `linear-gradient(135deg, rgba(0, 204, 51, ${0.25 * opacityFactor}) 0%, rgba(0, 255, 65, ${0.15 * opacityFactor}) 60%, rgba(0, 180, 45, ${0.2 * opacityFactor}) 100%)`,
       boxShadow: `0 ${config.softness * 0.5}px ${config.softness * 2}px rgba(0, 255, 65, ${0.35 * opacityFactor}), 0 0 ${config.edgeSpecularity * 0.6}px rgba(0, 255, 65, ${0.1 * opacityFactor}), inset 0 1px 0 rgba(255, 255, 255, ${0.15 * opacityFactor})`,
@@ -64,7 +61,7 @@ const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
       background: `rgba(255, 255, 255, ${0.04 * opacityFactor})`,
       boxShadow: `0 ${config.softness * 0.4}px ${config.softness * 1.5}px rgba(0, 0, 0, ${0.3 * opacityFactor}), inset 0 1px 0 rgba(255, 255, 255, ${0.1 * opacityFactor})`,
     }),
-  };
+  } as React.CSSProperties;
 
   return (
     <motion.button
