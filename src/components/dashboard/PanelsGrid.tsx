@@ -324,7 +324,7 @@ const PanelsGrid: React.FC<PanelsGridProps> = ({ activePanels }) => {
 
   if (activePanels.length === 0) {
     return (
-      <div className="bg-white/75 dark:bg-gray-800/75 rounded-lg border border-gray-200/75 dark:border-gray-700/75 backdrop-blur-sm p-8">
+      <div className="liquid-glass-container rounded-lg p-8">
         <EmptyState 
           icon={Package}
           title="Nenhum painel ativo"
@@ -344,7 +344,7 @@ const PanelsGrid: React.FC<PanelsGridProps> = ({ activePanels }) => {
         const template = getPanelTemplate(panel.id);
         
         return (
-          <div key={panel.id} className="bg-white/75 dark:bg-gray-800/75 rounded-lg border border-gray-200/75 dark:border-gray-700/75 backdrop-blur-sm">
+          <div key={panel.id} className="liquid-glass-container rounded-lg">
             <CardHeader className="pb-4">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
