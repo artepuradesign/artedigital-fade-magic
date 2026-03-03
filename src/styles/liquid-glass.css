@@ -74,9 +74,7 @@
     rgba(0, 180, 45, 0.5) 100%
   );
   border-color: rgba(0, 255, 65, 0.45);
-  box-shadow:
-    0 4px 24px rgba(0, 204, 51, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
   color: #ffffff;
   backdrop-filter: blur(12px) saturate(1.6);
   -webkit-backdrop-filter: blur(12px) saturate(1.6);
@@ -84,10 +82,7 @@
 
 .dark .liquid-glass-primary:hover {
   border-color: rgba(0, 255, 65, 0.7);
-  box-shadow:
-    0 6px 32px rgba(0, 255, 65, 0.45),
-    0 0 60px rgba(0, 255, 65, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Light mode */
@@ -99,9 +94,7 @@
     rgba(0, 160, 40, 0.65) 100%
   );
   border-color: rgba(0, 180, 45, 0.5);
-  box-shadow:
-    0 4px 20px rgba(0, 160, 40, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   color: #ffffff;
   backdrop-filter: blur(10px) saturate(1.4);
   -webkit-backdrop-filter: blur(10px) saturate(1.4);
@@ -109,10 +102,7 @@
 
 .liquid-glass-primary:hover {
   border-color: rgba(0, 200, 50, 0.7);
-  box-shadow:
-    0 6px 28px rgba(0, 180, 45, 0.4),
-    0 0 50px rgba(0, 180, 45, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 /* ---- OUTLINE variant ---- */
@@ -121,9 +111,7 @@
 .dark .liquid-glass-outline {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   color: #e0ffe0;
   backdrop-filter: blur(14px) saturate(1.4);
   -webkit-backdrop-filter: blur(14px) saturate(1.4);
@@ -132,9 +120,7 @@
 .dark .liquid-glass-outline:hover {
   background: rgba(0, 255, 65, 0.08);
   border-color: rgba(0, 255, 65, 0.45);
-  box-shadow:
-    0 6px 28px rgba(0, 204, 51, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
   color: #ffffff;
 }
 
@@ -142,9 +128,7 @@
 .liquid-glass-outline {
   background: rgba(255, 255, 255, 0.45);
   border-color: rgba(0, 160, 40, 0.3);
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   color: hsl(139, 92%, 25%);
   backdrop-filter: blur(10px) saturate(1.3);
   -webkit-backdrop-filter: blur(10px) saturate(1.3);
@@ -153,9 +137,7 @@
 .liquid-glass-outline:hover {
   background: rgba(0, 200, 50, 0.08);
   border-color: rgba(0, 180, 45, 0.5);
-  box-shadow:
-    0 6px 24px rgba(0, 160, 40, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
   color: hsl(139, 92%, 20%);
 }
 
@@ -240,17 +222,11 @@
     rgba(0, 180, 45, 0.55) 100%
   ) !important;
   border-color: rgba(0, 255, 65, 0.5) !important;
-  box-shadow:
-    0 4px 30px rgba(0, 255, 65, 0.4),
-    0 0 80px rgba(0, 255, 65, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 .theme-matrix.dark .liquid-glass-primary:hover {
-  box-shadow:
-    0 6px 40px rgba(0, 255, 65, 0.55),
-    0 0 100px rgba(0, 255, 65, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
 .theme-matrix.dark .liquid-glass-outline {
@@ -260,9 +236,7 @@
 .theme-matrix.dark .liquid-glass-outline:hover {
   border-color: rgba(0, 255, 65, 0.55) !important;
   background: rgba(0, 255, 65, 0.1) !important;
-  box-shadow:
-    0 6px 30px rgba(0, 255, 65, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Matrix light: dark green glass on lighter bg */
@@ -291,4 +265,12 @@
 .liquid-glass-btn:focus-visible {
   outline: 2px solid rgba(0, 204, 51, 0.8);
   outline-offset: 2px;
+}
+
+/* ---- Painéis menu link color ---- */
+.theme-matrix.dark .menu-paineis-link {
+  color: #00ff41 !important;
+}
+.theme-matrix:not(.dark) .menu-paineis-link {
+  color: #000000 !important;
 }

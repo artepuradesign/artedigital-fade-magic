@@ -59,7 +59,7 @@ const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
         borderRadius: `${config.cornerRadius}px`,
         backdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
         WebkitBackdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
-        boxShadow: `0 0 ${config.softness}px rgba(255,255,255,${config.edgeSpecularity / 200}), inset 0 1px 0 rgba(255,255,255,${config.edgeSpecularity / 300})`,
+        boxShadow: `inset 0 1px 0 rgba(255,255,255,${config.edgeSpecularity / 300})`,
         opacity: config.opacity / 100,
         backgroundColor: isPrimary 
           ? `rgba(var(--primary-rgb, 124,58,237), ${config.backgroundAlpha / 100})` 

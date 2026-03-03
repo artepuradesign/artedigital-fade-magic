@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'sonner';
 import { useLiquidGlass, defaultLiquidGlassConfig, LiquidGlassConfig } from '@/contexts/LiquidGlassContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
-import { RotateCcw, Droplets, Eye, Save } from 'lucide-react';
+import { RotateCcw, Droplets, Eye, Save, Sun, Moon } from 'lucide-react';
 import DashboardTitleCard from '@/components/dashboard/DashboardTitleCard';
 import { useSiteTheme } from '@/contexts/SiteThemeContext';
 import MatrixRainBackground from '@/components/effects/MatrixRainBackground';
@@ -40,6 +40,9 @@ const LiquidGlassAdmin = () => {
   const { config, updateParam, resetToDefaults } = useLiquidGlass();
   const { currentVisualTheme } = useSiteTheme();
   const isMatrix = currentVisualTheme === 'matrix';
+  const [previewDark, setPreviewDark] = useState(true);
+
+  const glassFilter = `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`;
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -100,19 +103,37 @@ const LiquidGlassAdmin = () => {
         {/* Preview Panel */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Eye className="h-4 w-4" />
-              Preview
-            </CardTitle>
-            <CardDescription>Visualize o efeito em tempo real</CardDescription>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Eye className="h-4 w-4" />
+                  Preview
+                </CardTitle>
+                <CardDescription>Visualize o efeito em tempo real</CardDescription>
+              </div>
+              {/* Theme toggle for preview */}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPreviewDark(!previewDark)}
+                className="gap-2"
+              >
+                {previewDark ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+                {previewDark ? 'Claro' : 'Escuro'}
+              </Button>
+            </div>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Preview area with theme-aware background */}
             <div
-              className="relative rounded-xl overflow-hidden p-8 min-h-[350px] flex flex-col items-center justify-center gap-6"
-              style={isMatrix ? { background: '#000' } : {
-                background: 'linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--background)) 50%, hsl(var(--accent)) 100%)',
-              }}
+              className="relative rounded-xl overflow-hidden p-8 min-h-[400px] flex flex-col items-center justify-center gap-6"
+              style={isMatrix
+                ? { background: previewDark ? '#000' : '#f0fff0' }
+                : { background: previewDark
+                    ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
+                    : 'linear-gradient(135deg, #e8e8f0 0%, #f5f5fa 50%, #dde4f0 100%)'
+                }
+              }
             >
               {/* Matrix: animated rain background; Default: decorative circles */}
               {isMatrix ? (
@@ -121,37 +142,41 @@ const LiquidGlassAdmin = () => {
                 </div>
               ) : (
                 <>
-                  <div className="absolute top-8 left-8 w-32 h-32 rounded-full bg-primary/20 blur-xl" />
-                  <div className="absolute bottom-12 right-12 w-40 h-40 rounded-full bg-accent/30 blur-2xl" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-secondary/40 blur-xl" />
+                  <div className="absolute top-8 left-8 w-32 h-32 rounded-full blur-xl" style={{ background: previewDark ? 'rgba(124,58,237,0.2)' : 'rgba(124,58,237,0.15)' }} />
+                  <div className="absolute bottom-12 right-12 w-40 h-40 rounded-full blur-2xl" style={{ background: previewDark ? 'rgba(59,130,246,0.15)' : 'rgba(59,130,246,0.1)' }} />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full blur-xl" style={{ background: previewDark ? 'rgba(168,85,247,0.15)' : 'rgba(168,85,247,0.1)' }} />
                 </>
               )}
 
               {/* Glass Card Preview */}
               <div
-                className="relative z-10 p-6 border border-white/20 shadow-xl max-w-sm w-full text-center"
+                className="relative z-10 p-6 max-w-sm w-full text-center"
                 style={{
                   borderRadius: `${config.cornerRadius}px`,
-                  backdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
-                  WebkitBackdropFilter: `blur(${config.strength + config.extraBlur}px) saturate(${config.tintSaturation}%) contrast(${config.contrast}%) brightness(${config.brightness}%) invert(${config.invert}%) hue-rotate(${config.tintHue}deg)`,
-                  background: `rgba(255,255,255,${config.backgroundAlpha / 100})`,
+                  backdropFilter: glassFilter,
+                  WebkitBackdropFilter: glassFilter,
+                  background: previewDark
+                    ? `rgba(255,255,255,${config.backgroundAlpha / 100})`
+                    : `rgba(255,255,255,${Math.min(config.backgroundAlpha / 100 + 0.2, 1)})`,
                   boxShadow: `0 0 ${config.softness}px rgba(255,255,255,${config.edgeSpecularity / 200}), inset 0 1px 0 rgba(255,255,255,${config.edgeSpecularity / 300})`,
                   opacity: config.opacity / 100,
+                  border: `1px solid rgba(255,255,255,${previewDark ? 0.15 : 0.3})`,
                 }}
               >
-                <p className="text-base font-semibold text-foreground/90">Liquid Glass Preview</p>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-base font-semibold" style={{ color: previewDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.85)' }}>
+                  Liquid Glass Preview
+                </p>
+                <p className="text-sm mt-2" style={{ color: previewDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)' }}>
                   Este card reflete todas as configurações em tempo real.
                 </p>
               </div>
-            </div>
 
-            {/* Button preview - separate from the card */}
-            <div className="flex flex-col items-center gap-3">
-              <p className="text-xs font-medium text-muted-foreground">Preview do Botão</p>
-              <LiquidGlassButton variant="primary">
-                Botão Liquid Glass
-              </LiquidGlassButton>
+              {/* Button inside preview */}
+              <div className="relative z-10">
+                <LiquidGlassButton variant="primary">
+                  Botão Liquid Glass
+                </LiquidGlassButton>
+              </div>
             </div>
 
             {/* Current Config Summary */}
