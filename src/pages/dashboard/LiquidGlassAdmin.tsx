@@ -6,6 +6,9 @@ import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { RotateCcw, Droplets, Eye, Save } from 'lucide-react';
 import DashboardTitleCard from '@/components/dashboard/DashboardTitleCard';
+import { useSiteTheme } from '@/contexts/SiteThemeContext';
+import MatrixRainBackground from '@/components/effects/MatrixRainBackground';
+import LiquidGlassButton from '@/components/ui/LiquidGlassButton';
 
 
 interface SliderParam {
@@ -35,6 +38,8 @@ const sliderParams: SliderParam[] = [
 
 const LiquidGlassAdmin = () => {
   const { config, updateParam, resetToDefaults } = useLiquidGlass();
+  const { currentVisualTheme } = useSiteTheme();
+  const isMatrix = currentVisualTheme === 'matrix';
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -101,19 +106,28 @@ const LiquidGlassAdmin = () => {
             </CardTitle>
             <CardDescription>Visualize o efeito em tempo real</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-6">
+            {/* Preview area with theme-aware background */}
             <div
-              className="relative rounded-xl overflow-hidden p-8 min-h-[400px] flex flex-col items-center justify-center gap-6"
-              style={{
+              className="relative rounded-xl overflow-hidden p-8 min-h-[350px] flex flex-col items-center justify-center gap-6"
+              style={isMatrix ? { background: '#000' } : {
                 background: 'linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--background)) 50%, hsl(var(--accent)) 100%)',
               }}
             >
-              {/* Decorative circles for background interest */}
-              <div className="absolute top-8 left-8 w-32 h-32 rounded-full bg-primary/20 blur-xl" />
-              <div className="absolute bottom-12 right-12 w-40 h-40 rounded-full bg-accent/30 blur-2xl" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-secondary/40 blur-xl" />
+              {/* Matrix: animated rain background; Default: decorative circles */}
+              {isMatrix ? (
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <MatrixRainBackground />
+                </div>
+              ) : (
+                <>
+                  <div className="absolute top-8 left-8 w-32 h-32 rounded-full bg-primary/20 blur-xl" />
+                  <div className="absolute bottom-12 right-12 w-40 h-40 rounded-full bg-accent/30 blur-2xl" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-secondary/40 blur-xl" />
+                </>
+              )}
 
-              {/* Single Glass Card Preview */}
+              {/* Glass Card Preview */}
               <div
                 className="relative z-10 p-6 border border-white/20 shadow-xl max-w-sm w-full text-center"
                 style={{
@@ -129,16 +143,15 @@ const LiquidGlassAdmin = () => {
                 <p className="text-sm text-muted-foreground mt-2">
                   Este card reflete todas as configurações em tempo real.
                 </p>
-                <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
-                  style={{
-                    background: `rgba(0, 200, 50, ${0.3 + config.tinting / 300})`,
-                    borderRadius: `${config.cornerRadius}px`,
-                    backdropFilter: `blur(${config.strength}px)`,
-                  }}
-                >
-                  Botão Exemplo
-                </div>
               </div>
+            </div>
+
+            {/* Button preview - separate from the card */}
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-xs font-medium text-muted-foreground">Preview do Botão</p>
+              <LiquidGlassButton variant="primary">
+                Botão Liquid Glass
+              </LiquidGlassButton>
             </div>
 
             {/* Current Config Summary */}

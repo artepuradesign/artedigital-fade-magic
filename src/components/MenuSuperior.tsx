@@ -97,7 +97,7 @@ const MenuSuperior = () => {
 
   return (
     <TooltipProvider delayDuration={300}>
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-800">
+      <header className="sticky top-0 z-50 liquid-glass-container border-b border-white/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex justify-between items-center h-16">
             {/* Tablet e Desktop - Logo com Theme e Notifications (>=768px) */}

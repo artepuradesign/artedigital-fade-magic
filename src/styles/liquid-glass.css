@@ -1,5 +1,42 @@
 
 /* ============================================================
+   Liquid Glass – Apple WWDC 2025 inspired
+   ============================================================ */
+
+/* ---- Container (panels, sidebar, header) ---- */
+.liquid-glass-container {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .liquid-glass-container {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.theme-matrix.dark .liquid-glass-container {
+  background: rgba(0, 10, 0, 0.45);
+  border-color: rgba(0, 255, 65, 0.15);
+  box-shadow:
+    0 4px 20px rgba(0, 255, 65, 0.08),
+    inset 0 1px 0 rgba(0, 255, 65, 0.05);
+}
+
+.theme-matrix:not(.dark) .liquid-glass-container {
+  background: rgba(240, 255, 240, 0.55);
+  border-color: rgba(0, 160, 40, 0.15);
+}
+
+/* ============================================================
    Liquid Glass Buttons – Apple WWDC 2025 inspired
    ============================================================ */
 

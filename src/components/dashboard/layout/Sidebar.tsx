@@ -50,7 +50,7 @@ const Sidebar = ({
         h-full 
         transition-all duration-300 ease-in-out
         ${collapsed ? 'w-20' : 'w-64'}
-        ${isMobile ? '' : 'bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700'} 
+        ${isMobile ? '' : 'liquid-glass-container border-r border-white/20'} 
         flex flex-col
         z-30
         ${collapsed ? 'cursor-pointer' : ''}
